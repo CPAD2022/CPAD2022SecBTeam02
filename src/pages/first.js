@@ -22,10 +22,10 @@ export default class First extends Component {
                 <ImageBackground 
                 style={styles.backgroundimage}
                 source={require('../images/pic.jpg')}>
-                    <Text style={styles.BMSIT}>
+                    <Text style={styles.BITS}>
                     Birla Institute of Technology & Science
                     </Text>
-                    <Text style={styles.BMSIT}>
+                    <Text style={styles.BITS}>
                     Pilani  
                     </Text>
                 <TouchableOpacity style={styles.button} >
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
         marginBottom : 5,
         paddingHorizontal:20,
     },
-    BMSIT:{
+    BITS:{
         fontSize:22,
         fontWeight:'bold',
         color:'black',
