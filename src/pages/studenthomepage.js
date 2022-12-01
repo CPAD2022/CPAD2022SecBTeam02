@@ -92,3 +92,39 @@ export default class Studenthomepage extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  maincontainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#899097",
+    paddingTop: Platform.OS === "ios" ? 20 : 0,
+  },
+  button: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: 270,
+    backgroundColor: "#44584e",
+    borderWidth: 0.5,
+    borderRadius: 30,
+    height: 70,
+    margin: 7,
+  },
+  buttontext: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "red",
+    marginBottom: 4,
+    paddingHorizontal: 35,
+  },
+  backgroundimage: {
+    flex: 1,
+    width: null,
+    height: null,
+    justifyContent: "center",
+    alignItems: "center",
+    opacity: 0.95,
+    paddingHorizontal: 40,
+  },
+});
