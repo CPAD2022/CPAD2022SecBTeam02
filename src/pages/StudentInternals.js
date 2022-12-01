@@ -113,3 +113,30 @@ export default class StudentInternals extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  activityindicator: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 250,
+  },
+  check: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  card: {
+    width: 240,
+    marginTop: 50,
+    height: 250,
+    borderRadius: 15,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#e4463a",
+  },
+  text: {
+    alignSelf: "center",
+    fontWeight: "bold",
+    fontSize: 25,
+  },
+});
