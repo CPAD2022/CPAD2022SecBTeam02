@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {View,StyleSheet,TouchableOpacity,Text,Dimensions, ActivityIndicator,ImageBackground,Platform} from 'react-native';
 import {Actions} from 'react-native-router-flux';
@@ -73,5 +72,4 @@ export default class SelectInternalsForMarks extends Component {
         "label": e.name
       }
     } )
-  }
-}
+  }}
