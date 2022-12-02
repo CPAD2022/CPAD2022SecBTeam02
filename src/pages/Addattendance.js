@@ -32,4 +32,15 @@ export default class Addattendance extends Component {
             })
         })
     }
-}
+    render(){
+        return (
+            <View>
+                {this.state.students.map(student => {
+                    
+                    return <Card key={student.id} name={student.name} usn={student.usn}></Card>
+                })}
+            </View>
+        )
+    }
+    }
+    
