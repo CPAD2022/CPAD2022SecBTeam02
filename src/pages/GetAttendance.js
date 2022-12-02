@@ -54,7 +54,7 @@ export default class GetAttendance extends React.Component {
             filteredStudents: filteredStudents
         })
     }
-}
+
 filterAttendance = () => {
     let finalSummary = {}
     Object.keys(this.state.summary).forEach(record => {
@@ -97,3 +97,55 @@ calculateAttendance = async() => {
         })
     }
 }
+
+ summarizeAttendance = () => {
+        let summary = {}
+        this.state.students.forEach(student => {
+            if(summary[`${student['id']}`] == undefined){
+                summary[`${student['id']}`] = []
+            }
+            summary[`${student['id']}`].push(student["status"])
+        })
+        this.setState({
+            summary: summary
+        })
+        this.filterAttendance()
+    }
+    
+    componentDidMount(){
+        this.calculateAttendance().then(() => {
+            this.summarizeAttendance()
+            this.setState({
+                isLoading: false
+           })
+        })
+       
+    }
+
+    render(){
+        return(
+            <ScrollView>
+                <View style={{
+                    marginTop: 48,
+                    paddingHorizontal: 20,
+                   
+                }}>
+                    {!this.state.isLoading?this.state.filteredStudents.map(v => {
+                        return (
+                            <StudentCard key={v.id} name={v.name} usn={v.usn} summary={`${v.presentClasses} / ${v.totalClasses}`}
+                             percentage={`${Number.parseInt(v.percentage || 0)}%`} percentile={`${Number.parseInt(v.percentile || 0)}%`} />)
+                    }): <ActivityIndicator size="large" color="#1273de"
+                    style={styles.activityindicator} />}
+                </View>
+            </ScrollView>
+        )
+    }
+}
+
+const styles = StyleSheet.create({
+    activityindicator:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop:250
+    }
+})
