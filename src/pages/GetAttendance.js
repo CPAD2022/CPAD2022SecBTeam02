@@ -55,3 +55,45 @@ export default class GetAttendance extends React.Component {
         })
     }
 }
+filterAttendance = () => {
+    let finalSummary = {}
+    Object.keys(this.state.summary).forEach(record => {
+        let studentDetails = this.state.students.filter((v) => {
+            return v.id === record
+        })[0]
+        let studentSummary = this.state.summary[`${record}`]
+        let totalClases = studentSummary.length
+        let presentClasses = studentSummary.filter(v => v === true).length
+        finalSummary[`${record}`] = {
+            "id": record,
+            "name": studentDetails.name,
+            "usn": studentDetails.usn,
+            "totalClasses": totalClases,
+            "presentClasses": presentClasses,
+            "percentage": (presentClasses * 100 / totalClases)
+        }
+    })
+    this.setState({
+        summary: finalSummary
+    })
+    this.filterBasedOnPercentage()
+    this.state.filteredStudents.forEach((v, i) => this.calculatePercentile(v, i))
+}
+
+calculateAttendance = async() => {
+    let { startDate, endDate } = this.formatDates(this.props.startDate, this.props.endDate)
+    let subjectReference = await db.collection('subject').doc(this.props.subject)
+    let snapshot = await db.collection('attendance').where("timestamp", ">=", startDate).where("timestamp", "<=", endDate).where("subject", "==", subjectReference).get()
+    let docs = snapshot.docs
+    for(let i = 0; i < docs.length; i++){
+        let student = await db.collection('student').doc(docs[i].get("student").id).get()
+        this.setState({
+            students: this.state.students.concat({
+                "id": student.id,
+                "name": student.get("name"),
+                "usn": student.get("usn"),
+                "status": docs[i].get("status")
+            })
+        })
+    }
+}
