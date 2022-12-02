@@ -83,3 +83,58 @@ export default class StudentResetPassword extends Component {
     
         }
     }
+    const styles = StyleSheet.create({
+        container: {
+          flexGrow: 1,
+          backgroundColor: '#899097',
+          alignItems:'center',
+          justifyContent:'flex-start',
+        },
+        
+        logintext: {
+            marginVertical:15,
+            fontSize:22,
+            color: 'black',
+            fontWeight:'bold',
+        },
+        inputbox:{
+            width:300,
+            height:50,
+            backgroundColor: 'rgba(255,255,255,0.5)',
+            borderRadius:25,
+            fontWeight:'500',
+            paddingHorizontal:20,
+            fontSize:22,
+            color:"#000000",
+            marginVertical:10,
+        },
+        button:{
+            width:300,
+            backgroundColor: "#202824",
+            borderRadius:25,
+            marginVertical:10,
+            paddingVertical:12,
+        },
+        loginerror:{
+            fontSize:18,
+            fontWeight:'bold',
+            color:'red',
+            textAlign:'center',
+        },
+        buttontext:{
+            fontSize:19,
+            fontWeight:'500',
+            color:'#ffffff',
+            textAlign:'center',
+        },
+        backgroundimage:{
+            flex: 1,
+            width: '150%',
+            height: '100%',
+            justifyContent: "center",
+            alignItems: "center",
+            opacity: 0.9,
+            paddingHorizontal:30,
+            
+        }
+      });
