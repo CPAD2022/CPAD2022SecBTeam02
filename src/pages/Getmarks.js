@@ -29,4 +29,32 @@ export default class GetMarks extends React.Component {
         }
         return _students
     }
+
+    componentDidMount(){
+        let internalReference = db.collection('internals').doc(this.props.internal)
+        this.getMarks(internalReference).then((v, e) => {
+            this.setState({
+                students: v
+            })
+        })
+    }
+
+    render(){
+        return(
+            <ScrollView>
+                <View style={{
+                    marginTop: 48,
+                    paddingHorizontal: 20,
+                   
+                }}>
+            {this.state.students.map(student => {
+                return (<MarksCard key={student.id} name={student.name} usn={student.usn}
+                marks={student.marks}/>)
+            })}
+             </View>
+            </ScrollView>
+        )
+    }
+
+   
 }
