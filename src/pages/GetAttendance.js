@@ -32,4 +32,26 @@ export default class GetAttendance extends React.Component {
         }
         
     }
+    calculatePercentile = (ref, index) => {
+        let _percentile = ref.percentage / this.state.max * 100
+        let _filtered = this.state.filteredStudents
+        _filtered[index]["percentile"] = _percentile
+        this.setState({
+            filteredStudents: _filtered
+        })
+    }
+
+    filterBasedOnPercentage = () => {
+        let filteredStudents = Object.values(this.state.summary).filter(v => {
+            if(v.percentage > this.state.max){
+                this.setState({
+                    max: v.percentage > 0 ? v.percentage : 1
+                })
+            }
+            return Number.parseFloat(v.percentage || 0) <= Number.parseFloat(this.props.percentage || 0)
+        })
+        this.setState({
+            filteredStudents: filteredStudents
+        })
+    }
 }
