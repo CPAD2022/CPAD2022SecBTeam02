@@ -43,4 +43,31 @@ export default class Addbatch extends Component {
         this.retrieveInternals(currentSubjects[0].id)
       }
     })
-  }}
+  }
+  retrieveInternals = (subjects) => {
+    let InternalsReference = db.collection('subject').doc(subjects)
+    db.collection('internals').where('subject', "==" ,InternalsReference).get().then(snapshot => {
+      let docs = snapshot.docs;
+      let currentInternals = []
+      docs.forEach(internal => {
+        currentInternals.push({
+          "id": internal.id,
+          "name": internal.get("name")
+        })
+      })
+      this.setState({
+        internals: currentInternals,
+        isLoading: false
+      })
+      if(currentInternals.length > 0){
+        this.setState({
+          selectedInternals: currentInternals[0].id
+        })
+      } else {
+          this.setState({
+              selectedInternals: "No internals present"
+          })
+      }
+    })
+  }
+}
