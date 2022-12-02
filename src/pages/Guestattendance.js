@@ -61,4 +61,59 @@ export default class GuestAttendance extends React.Component {
             })
         })
     }
+    render(){
+        return (
+            <View style={styles.check}>
+            <ScrollView >
+            {!this.state.isLoading ? this.state.attendance.map(v => {
+                return (<Card
+                style={styles.card}>
+                <Text style={
+                    styles.text
+                }>Subject: {v.name}</Text>
+                <Text style={
+                    styles.text
+                }>Attendance: {v.present} / {v.total}</Text>
+                 <Text style={
+                    styles.text
+                }>Percentage: {v.percentage}</Text>
+               
+            </Card>
+            )}) : <ActivityIndicator size="large" color="#1273de"
+                    style={styles.activityindicator} />}
+            </ScrollView>
+            </View>
+        )
+    }
 }
+
+const styles = StyleSheet.create({
+    activityindicator:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop:250
+    },
+    check:{
+       
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    card: {
+        width: 240,
+        marginTop: 50,
+        height: 250,
+        borderRadius: 15,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: '#e4463a',
+        
+    },
+    text: {
+        alignSelf: "center",
+        fontWeight: "bold",
+        fontSize: 25
+    },
+    
+       
+})
