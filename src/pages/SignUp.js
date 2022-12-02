@@ -70,3 +70,52 @@ export default class Signup extends Component {
 
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#899097',
+      alignItems:'center',
+      justifyContent:'center',
+    },
+    signuptext:{
+      flexGrow:1,
+      alignItems:'center',
+      justifyContent:'center',
+      flexDirection:'row',
+      paddingVertical:16,
+    },
+    signup: {
+        fontSize:16,
+        color:'rgba(255,255,255,0.7)',
+    },
+    signupbutton:{
+        fontSize:16,
+        fontWeight:'500',
+    },
+    inputbox:{
+        width:300,
+        height:40,
+        backgroundColor: 'rgba(255,255,255,0.3)',
+        borderRadius:25,
+        fontWeight:'500',
+        paddingHorizontal:20,
+        fontSize:18,
+        color:"#ffffff",
+        marginVertical:10,
+    },
+   
+    button:{
+        width:300,
+        backgroundColor: "#555b5f",
+        borderRadius:25,
+        marginVertical:10,
+        paddingVertical:12,
+    },
+    buttontext:{
+        fontSize:16,
+        fontWeight:'500',
+        color:'#ffffff',
+        textAlign:'center',
+    }
+  });
