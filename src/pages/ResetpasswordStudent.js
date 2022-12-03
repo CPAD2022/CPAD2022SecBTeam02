@@ -129,7 +129,7 @@ export default class StudentResetPassword extends Component {
         },
         backgroundimage:{
             flex: 1,
-            width: '150%',
+            width: '150%',   
             height: '100%',
             justifyContent: "center",
             alignItems: "center",
