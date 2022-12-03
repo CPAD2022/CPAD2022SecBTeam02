@@ -1,0 +1,102 @@
+diff --git a/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/affix/index.js b/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/affix/index.js
+index d6c9d64..fe33c27 100644
+--- a/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/affix/index.js
++++ b/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/affix/index.js
+@@ -1,6 +1,6 @@
+ import PropTypes from 'prop-types';
+ import React, { PureComponent } from 'react';
+-import { Animated } from 'react-native';
++import { Animated, Text } from 'react-native';
+ 
+ import styles from './styles';
+ 
+@@ -24,7 +24,7 @@ export default class Affix extends PureComponent {
+     baseColor: PropTypes.string.isRequired,
+     animationDuration: PropTypes.number.isRequired,
+ 
+-    style: Animated.Text.propTypes.style,
++    style: Text.propType,
+ 
+     children: PropTypes.oneOfType([
+       PropTypes.arrayOf(PropTypes.node),
+@@ -51,6 +51,7 @@ export default class Affix extends PureComponent {
+         .timing(opacity, {
+           toValue: (props.active || props.focused)? 1 : 0,
+           duration: animationDuration,
++          useNativeDriver: true,
+         })
+         .start();
+     }
+diff --git a/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/field/index.js b/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/field/index.js
+index 52c1868..c7f4658 100644
+--- a/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/field/index.js
++++ b/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/field/index.js
+@@ -157,7 +157,7 @@ export default class TextField extends PureComponent {
+       let toValue = this.focusState(props.error, state.focused);
+ 
+       Animated
+-        .timing(focus, { toValue, duration })
++        .timing(focus, { toValue, duration, useNativeDriver: true, })
+         .start(this.onFocusAnimationEnd);
+     }
+   }
+diff --git a/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/helper/index.js b/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/helper/index.js
+index 60184ea..362a81d 100644
+--- a/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/helper/index.js
++++ b/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/helper/index.js
+@@ -1,6 +1,6 @@
+ import PropTypes from 'prop-types';
+ import React, { PureComponent } from 'react';
+-import { View, Animated } from 'react-native';
++import { View, Animated, Text } from 'react-native';
+ 
+ import styles from './styles';
+ 
+@@ -10,7 +10,7 @@ export default class Helper extends PureComponent {
+   };
+ 
+   static propTypes = {
+-    style: Animated.Text.propTypes.style,
++    style: Text.propType,
+     children: PropTypes.oneOfType([
+       PropTypes.arrayOf(PropTypes.node),
+       PropTypes.node,
+diff --git a/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/label/index.js b/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/label/index.js
+index ac3ed53..66fdbaf 100644
+--- a/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/label/index.js
++++ b/node_modules/react-native-material-dropdown/node_modules/react-native-material-textfield/src/components/label/index.js
+@@ -1,6 +1,6 @@
+ import PropTypes from 'prop-types';
+ import React, { PureComponent } from 'react';
+-import { Animated } from 'react-native';
++import { Animated, Text } from 'react-native';
+ 
+ export default class Label extends PureComponent {
+   static defaultProps = {
+@@ -29,7 +29,7 @@ export default class Label extends PureComponent {
+ 
+     animationDuration: PropTypes.number.isRequired,
+ 
+-    style: Animated.Text.propTypes.style,
++    style: Text.propType,
+ 
+     children: PropTypes.oneOfType([
+       PropTypes.arrayOf(PropTypes.node),
+@@ -54,7 +54,7 @@ export default class Label extends PureComponent {
+       let toValue = this.inputState(props);
+ 
+       Animated
+-        .timing(input, { toValue, duration })
++        .timing(input, { toValue, duration, useNativeDriver: false, })
+         .start();
+     }
+ 
+@@ -62,7 +62,7 @@ export default class Label extends PureComponent {
+       let toValue = this.focusState(props);
+ 
+       Animated
+-        .timing(focus, { toValue, duration })
++        .timing(focus, { toValue, duration, useNativeDriver: false, })
+         .start();
+     }
+   }
