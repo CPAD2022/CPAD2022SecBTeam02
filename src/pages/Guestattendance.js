@@ -16,7 +16,7 @@ export default class GuestAttendance extends React.Component {
             subjects: [],
             student: {
                 id: null,
-                name: null,
+                name: null, 
                 usn: null,
                 batch: null
             },
